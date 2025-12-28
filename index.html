@@ -1,77 +1,121 @@
-<style>
-    * {
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Storage Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f7c6d9, #fbe7ef);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            color: #5a2a3c;
+        }
+
+        .box {
+            background: #fff0f6;
+            padding: 30px;
+            width: 360px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(180, 120, 150, 0.25);
+            border: 2px solid #f2c1d1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #b46a86;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border: 1px solid #f0c4d4;
+            background: #ffffff;
+            color: #5a2a3c;
+            outline: none;
+            transition: 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #b78aa0;
+        }
+
+        input:focus {
+            border-color: #d8a24a;
+            box-shadow: 0 0 0 2px #f7d58a66;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #e6b566, #f2d28b);
+            color: #5a3a00;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #f2c978, #e6b566);
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>User Information</h2>
+
+    <input id="name" placeholder="Full Name">
+    <input id="id" placeholder="ID Number">
+    <input id="phone" placeholder="Phone Number">
+    <input id="email" placeholder="Email Address">
+    <input id="address" placeholder="Home Address">
+
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Load</button>
+</div>
+
+<script>
+    function saveData() {
+        localStorage.setItem("name", document.getElementById("name").value);
+        localStorage.setItem("id", document.getElementById("id").value);
+        localStorage.setItem("phone", document.getElementById("phone").value);
+        localStorage.setItem("email", document.getElementById("email").value);
+        localStorage.setItem("address", document.getElementById("address").value);
+        alert("Data saved successfully!");
     }
 
-    body {
-        background: linear-gradient(135deg, #f7c6d9, #fbe7ef);
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-        color: #5a2a3c;
+    function loadData() {
+        document.getElementById("name").value = localStorage.getItem("name") || "";
+        document.getElementById("id").value = localStorage.getItem("id") || "";
+        document.getElementById("phone").value = localStorage.getItem("phone") || "";
+        document.getElementById("email").value = localStorage.getItem("email") || "";
+        document.getElementById("address").value = localStorage.getItem("address") || "";
     }
+</script>
 
-    .box {
-        background: #fff0f6;
-        padding: 30px;
-        width: 360px;
-        border-radius: 16px;
-        box-shadow: 0 12px 30px rgba(180, 120, 150, 0.25);
-        border: 2px solid #f2c1d1;
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: 600;
-        color: #b46a86;
-        letter-spacing: 1px;
-    }
-
-    input {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 10px;
-        border: 1px solid #f0c4d4;
-        background: #fff;
-        color: #5a2a3c;
-        outline: none;
-        transition: 0.2s ease;
-    }
-
-    input::placeholder {
-        color: #b78aa0;
-    }
-
-    input:focus {
-        border-color: #d8a24a;
-        box-shadow: 0 0 0 2px #f7d58a66;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 10px;
-        background: linear-gradient(135deg, #e6b566, #f2d28b);
-        color: #5a3a00;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: 0.3s ease;
-    }
-
-    button:hover {
-        background: linear-gradient(135deg, #f2c978, #e6b566);
-        transform: translateY(-1px);
-    }
-
-    button:active {
-        transform: scale(0.98);
-    }
-</style>
+</body>
+</html>
